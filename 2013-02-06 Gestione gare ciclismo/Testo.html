@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+</head>
+<body>
+<center>
+<h2>Gestione gare ciclismo<br>
+</h2>
+</center>
+Sviluppare un programma per la gestione di gare di ciclismo. Tutte le
+classi devono essere nel package <code>ciclismo</code>
+
+<h3>R1 - Gestione degli atleti<br>
+</h3>
+L'interazione con il sistema avviene attraverso la classe <b>AssociazioneCiclismo</b>.
+&Egrave; possibile inserire nuovi atleti tramite il metodo <b>aggiungiAtleta()</b>
+che riceve come parametri il numero tessera (identificatore unico di un
+atleta), il nome, il cognome e la societ&agrave; di appartenenza.
+<br>
+Deve essere possibile accedere ad un atleta dato il suo numero di tessera
+tramite il metodo <b>getAtleta()</b>.
+Il metodo restituisce il cognome dell'atleta, e genera l'eccezione <b>AtletaNonPresente</b>
+nel caso la tessare  non sia presente.<br>
+Il metodo <b>getFullAtleta()</b> &egrave; del tutto analogo al precedente, ma
+restituisce una stringa con numero di tessera, nome, cognome e la societ&agrave; separati da  virgole.
+<br>
+
+<h3>R2 - Gestione delle gare</h3>
+&Egrave; possibile inserire nuove gare tramite il metodo <b>aggiungiGara()</b>
+che riceve come parametri il codice della gara (una stringa,
+che vale come identificatore unico) un descrittore (stringa) e un peso
+(intero da 0 a 100). 
+<br>
+Deve essere possibile accedere ad una gara dato il suo codice tramite
+il metodo <b>getGara()</b>.
+<br>
+Il metodo rende il peso della gara e leva l'eccezione <b>GaraNonPresente</b>
+in caso di gara non presente.
+<br>
+
+<h3>R3 - Gestione classifica gara</h3>
+Un atleta pu&ograve; essere iscritto ad una gara tramite il metodo <span
+ style="font-weight: bold;">aggiungiAtletaGara()</span> che
+riceve l'identificatore dell'atleta e il codice della gara.
+<br>
+Il metodo leva le eccezioni AtletaNonPresente e GaraNonPresente nei
+rispettivi casi.
+<br>
+Il metodo <b>pettoraleAtletaGara()</b>
+riceve l'identificatore dell'atleta e il codice della gara e
+rende il numero di pettorale dell'atleta per una certa gara, o leva
+l'eccezione <span style="font-weight: bold;">NonIscritto </span>se
+non iscritto.
+<br>
+Il numero di pettorale viene attribuito automaticamente dal programma all'atleta,
+secondo l'ordine di iscrizione. Il primo iscritto ha pettorale 1, il secondo 2 e
+cosi via.
+<br>
+Allo stesso atleta sono assegnati, in generale, pettorali diversi per ogni gara.
+<br>
+Il programma gestisce la classifica di una gara come segue.<br>
+Il metodo <b>tempoAtletaGara() </b>riceve
+l'identificatore dell'atleta, il codice della gara e il tempo di
+quell'atleta per quella gara.<br>
+Per semplicita il tempo &egrave; dato da un int e rappresenta i minuti; inoltre
+si assuma che non ci siano ex-aequo.<br>
+Il metodo <b>posizioneAtletaGara() </b>riceve
+l'identificatore dell'atleta, il codice della gara, e rende la
+posizione dell'atleta.<br>
+Il metodo <span style="font-weight: bold;">classificaGara()</span>&nbsp;
+riceve il codice della gara e rende una lista con l'ordine di arrivo per la gara,
+ogni elemento &egrave; costituito da una stringa con il seguente
+formato: <code>pettorale, codiceTessera, cognome</code>.
+<br>
+
+<h3>R4 - Gestione classifica generale</h3>
+Il programma gestisce anche la classifica generale, che considera tutte le gare elencate. La
+classifica viene calcolata sommando i punteggi ottenuti per ogni gara da un atleta.
+<br>
+I punteggi sono: 10 punti al primo classificato, 9 al secondo, 8 al
+terzo e cosi via fino al decimo, poi zero punti.
+<br>
+Il metodo <b>classificaGenerale()</b>fornisce
+una lista con l'elenco degli atleti ordinati per classifica di tutte
+le gare.
+Ogni elemento della lista &egrave; una stringa e contiene per ogni atleta:
+codiceTessera, cognome, punteggio.<br>
+<br>
+Esiste un altra classifica pesata. I punteggi per gara sono quelli del
+metodo precedente, moltiplicati per il peso della gara<br>
+come definito dal metodo aggiungiGara().
+<br>
+Il metodo <span style="font-weight: bold;">classificaGeneralePesata()</span>
+fornisce questa classifica, come lista con stesso formato della
+precedente<br>
+<br>
+Non considerare casi di ex-aequo sulla classifica di tutte le gare.
+<br>
+
+<h3>R5 - Lettura da file</h3>
+Il metodo <span style="font-weight: bold;">loadGara()</span>
+permette di leggere da file i tempi di arrivo di una gara.
+<br>
+Il file &egrave; strutturato a righe come segue:
+<ul>
+<li>la prima riga contiene il codice della gara
+<li>le righe successive riportano i tempi degli atleti, in particolare
+sono presenti nell'ordine l'identificatore dell'atleta ed il tempo
+separati da un ";".<br>
+I tempi sono espressi nella forma <code>ore:minuti:secondi</code>.
+</ul>
+In caso di un errore nei dati il metodo deve terminare la lettura,
+annullare tutti i tempi per la gara in corso, e levare una IOException.
+<br>
+</body>
+</html>

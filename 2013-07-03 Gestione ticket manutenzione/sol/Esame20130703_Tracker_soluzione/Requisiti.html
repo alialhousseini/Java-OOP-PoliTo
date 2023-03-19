@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="it">
+<head>
+<title>Gestione Ticket Manutenzione</title>
+</head>
+<body>
+<h1 style="text-align: center;">Gestione Ticket Manutenzione</h1>
+<br>
+Progettare ed implementare un programma che permetta di gestire le rischieste di manutenzione (ticket). 
+Tutte le classi devono appartenere al package <code>ticketing</code>.
+
+<h2>R1. Utenti</h2>
+
+La classe principale con cui interagire &egrave; <b>Tracker</b>, il cui costruttore riceve 
+come parametro l'indirizzo della pagina web da cui accedere al sistema di gestione dei ticket.
+<br>L'indirizzo &egrave; leggibile tramite il metodo getter <b>getURL()</b>.<p>
+
+Gli utenti del sistema  possono essere inseriti tramite il metodo
+<b>nuovoUtente()</b> che riceve come parametri il nickname, il nome  reale 
+(opzionale, cio&egrave; pu&ograve; essere <code>null</code>), 
+l'indirizzo email e la password.<br>
+Se il nickname dell'utente, l'email o la password sono <code>null</code>, il metodo 
+genera un'eccezione di <b>InvalidInformationException</b>.
+<p>
+Dato il nickname &egrave; possibile recuperare l'utente tramite il metodo <b>getUtente()</b> 
+ed &egrave; possibile conoscere l'elenco di tutti gli utenti tramite il metodo <b>getUtenti()</b> 
+che restituisce la collezione degli utenti.<br>
+<p>
+Gli utenti sono rappresentanti dalla classe <b>Utente</b> che offre i seguenti metodi getter: <b>getNickname()</b>, 
+<b>getNome()</b> e <b>getEmail()</b>. Inoltre &egrave; presente il metodo <b>authenticate()</b> 
+che riceve come parametro la password inserita dall'utente e restituisce <code>true</code> se corrisponde
+alla password registrata, <code>false</code> altrimenti.
+
+
+<h2>R2. Prodotti</h2>
+
+&Egrave; possibile inserire un nuovo prodotto tramite il metodo <b>nuovoProdotto()</b>
+che riceve come parametri il nome e la descrizione.<br>
+Il metodo verifica che i parametri non siano nulli, nel caso genera un'eccezione di 
+<b>InvalidInformationException</b>.
+Inoltre genera un codice alfanumerico univoco, composto dal carattere <code>'P'</code> 
+seguito da un numero intero progressivo a partire da 1, che viene restituito dal metodo.
+<p>
+&Egrave; possibile accedere ad un prodotto dato il suo codice tramite il metodo <b>getProdotto()</b> 
+ed ottenere la lista dei prodotti tramite il metodo <b>getProdotti()</b>.
+I prodotti sono rappresentanti dalla classe <b>Prodotto</b> che offre i i metodi getter <b>getNome()</b>,
+<b>getDescrizione()</b> e <b>getCodice()</b>.
+
+
+<h2>R3. Ticket</h2>
+
+Quando un utente rileva un difetto di uno dei prodotti, pu&ograve; creare un ticket.
+Quest'operazione viene fatta tramite il metodo <b>nuovoTicket()</b> che riceve come parametri
+il codice del prodotto, il nickname dell'utente che lo crea, e l'etichetta.
+<p>
+Il metodo restituisce un oggetto di classe <b>Ticket</b> che rappresenta la segnalazione dell'anomalia
+e offre i metodi getter <b>getCodice()</b>, </b><b>getCreatore()</b>, <b>getProdotto()</b>, <b>getEtichetta()</b> e <b>getTimestamp()</b>.<br />
+
+Il metodo <b>getCodice()</b> restituisce il codice del ticket che &egrave; un numero intero progressivo,  a partire da 1, assegnato automaticamente ai ticket<br>
+Il timestamp &egrave; un long che riporta il tempo di sistema all'istante in cui il ticket &egrave; 
+stato creato, espresso in millisecondi.
+
+<p>
+&Egrave; possibile ottenere un ticket dato il suo codice tramite il metodo <b>getTicket()</b> che riceve
+il codice del ticket.
+Il metodo <b>getTickets()</b> restituisce la lista dei ticket ordinati cronologicamente in senso inverso, a partire
+dal pi&ugrave; recente.
+
+<p>
+<i>Suggerimento:</i> il tempo di sistema &egrave; disponibile tramite il metodo <code>System.currentTimeMillis()</code>.
+
+<h2>R4. Commenti</h2>
+
+Dato un ticket &egrave; possibile aggiungere dei commenti, tramite il metodo <b>nuovoCommento()</b>
+della classe Ticket che riceve come parametri il nickname dell'utente che inserisce il commento e 
+il testo del commento. Ad ogni commento viene assegnato un timestamp analogamente a quanto fatto 
+per i ticket.<br>
+&Egrave; possibile conosce i commenti di un ticket tramite il metodo <b>getCommenti()</b>
+che restituisce la lista dei commenti ordinati cronologicamente in senso inverso, dal pi&ugrave; recente.
+<p>
+I commenti sono rappresentati dalla classe <b>Commento</b> che offre i metodi getter
+<b>getAutore()</b>, <b>getTesto()</b>, <b>getTimestamp()</b> e <b>getTicket()</b>.
+
+
+<h2>R5. Statistiche</h2>
+
+Dato un prodotto &egrave; possibile conoscere il numero di ticket ad esso riferiti tramite il
+metodo <b>numeroTicket()</b> della classe Prodotto.<br>
+Il metodo <b>prodottiPerTicket()</b> della classe Tracker restituisce la lista dei prodotti ordinati per numero di 
+ticket decrescenti.
+<p>
+Dato un utente &egrave; possibile conoscere il numero di ticket da lui creati tramite il
+metodo <b>numeroTicket()</b> della classe Utente.<br>
+Il metodo <b>utentiPerTicket()</b> della classe Tracker restituisce la lista degli utenti ordinati 
+per numero decrescente di ticket creati. 
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+</body>
+</html>

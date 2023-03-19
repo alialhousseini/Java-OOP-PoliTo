@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+</head>
+
+
+<body>
+
+
+<h2 style="text-align: center;">Programmazione ad Oggetti</h2>
+
+<h1 style="text-align: center;">Gestione File Mp3</h1>
+
+Si scriva il nucleo di un programma per la gestione di file musicali. Tutti le classi fanno parte del package mp3.<br>
+Scaricare il progetto Eclipse zippato da qui: &nbsp;<span style="font-weight: bold;">http://softeng.polito.it/courses/03CBI/EsameMp3.zip <br>
+</span>Importare in Eclipse il progetto Eclipse nel file zip: NON modificare l'interfaccia della classe <span style="font-style: italic;">Archivio</span>. <br>
+Alla fine del compito consegnare uno zip del proprio progetto con nome "nome-cognome-matricola.zip" .<br>
+NB: i compiti consegnati che non compilano saranno penalizzati.<br>
+Si possono usare appunti e materiale ma NON al rete e chiavi USB.
+<h2>R1. Archivi e cartelle</h2>
+
+I file musicali sono organizzati in archivi. Un archivio, rappresentato dalla classe Archivio, rappresenta una<br>
+
+collezione di file presenti su un PC.<br>
+
+Gli archivi hanno un nome, passato come parametro del costruttore e restituito tramite il metodo getNome().<br>
+
+Un archivio attinge i brani da pi&ugrave; cartelle, che possono essere impostate tramite il metodo aggiungiCartella() che<br>
+
+riceve come parametro il path della cartella e restituisce un oggetto di tipo Cartella. La classe Cartella offre il metodo<br>
+
+getPath() per ottenere il path corrispondente.<br>
+
+&Eacute; possibile sapere quali sono le cartelle che costituiscono un archivio tramite il metodo getCartelle() che restituisce<br>
+
+una collezione di cartelle.<br>
+
+<h2>R2. File e Propriet&agrave;</h2>
+
+Le cartelle contengono dei file che possono essere registrati come brani tramite metodo aggiungiBrano() della classe<br>
+
+Cartella. Tale metodo riceve come parametro il nome del file, il titolo del brano ed il nome dell'artista; il metodo<br>
+
+restituisce un oggetto di tipo Brano.<br>
+
+Dato un brano &egrave; possibile sapere la cartella di appartenenza, il
+nome, il titolo e l'artista tramite i metodi getCartella(),<br>
+
+getNome(), getTitolo() e getArtista().<br>
+
+Il metodo getBrani() della classe Cartella permette di ottenere la collezione contenente tutti i brani presenti nella<br>
+
+cartella.<br>
+
+&Eacute; possibile sapere quali sono tutti i brani di un dato artista tramite il metodo getBraniArtista() della classe Archivio.<br>
+
+<h2>R3. Algoritmi di codifica</h2>
+
+I brani musicali possono essere codificati usando diversi algoritmi (es. MP3, Ogg, Wma).<br>
+
+Gli algoritmi sono registrati su un archivio tramite il metodo registraAlgoritmo() della classe Archivio che riceve<br>
+
+come parametri il nome dell'algoritmo, l'estensione corrispondente (senza il &ldquo;.&rdquo;) ed il nome del programma da<br>
+
+utilizzare per decodificare; questo metodo restituisce un oggetto di tipo Algoritmo.<br>
+
+La classe Algoritmo offre i metodi getNome(), getEstensione() e getProgramma() per poter conoscere<br>
+
+rispettivamente nome, estensione e programma di un algoritmo di codifica.<br>
+
+Il metodo getAlgoritmi() resituisce la collezione degli algoritmi registrati, ordinati per estensione (ordine<br>
+
+lessicografico crescente).<br>
+
+Tramite il metodo getAlgoritmo() della classe Archivio deve essere possibile ottenere l'oggetto Algoritmo<br>
+
+corrispondente ad una estensione data.<br>
+
+<h2>R4. Algoritmi dei brani</h2>
+
+Quando viene aggiunto un brano (tramite il metodo aggiungiBrano() della classe Cartella) il sistema deve trovare<br>
+
+l'algoritmo corrispondente in base all'estensione del nome del file e assegnarlo al brano.<br>
+
+A posteriori, per sapere quale algoritmo sia stato assegnato ad un brano si utilizza il metodo getAlgoritmo() della<br>
+
+classe Brano.<br>
+
+Per poter riprodurre il brano, si utilizza il metodo comandoPlay() della classe Brano che restituisce la stringa con i<br>
+
+comandi da eseguire. La stringa restituita &egrave; composta da due
+righe separate da un a-capo (&ldquo;\n&rdquo;): la prima riga contiene<br>
+
+il comando &ldquo;cd&rdquo; seguito dal path della cartella contenente il brano, la seconda riga contiene il nome del programma<br>
+
+associato all'algoritmo di codifica seguito dal nome del file del brano (separati da uno spazio).<br>
+
+Esempio: &ldquo;cd /musica\nmplayer one.wma&rdquo;<br>
+
+<h2>R5. Lettura da file</h2>
+
+&Eacute; possibile leggere da file le informazioni relative ad archivi, cartelle, brani, ed algoritmi tramite il metodo leggi()<br>
+
+della classe Archivio.<br>
+
+Le informazioni sono memorizzate una per riga, i campi di ogni riga sono separati dal punto e virgola &ldquo;;&rdquo;. Ogni riga<br>
+
+inizia con un carattere che indica il tipo di elemento descritto.<br>
+
+Gli algoritmi di codifica sono identificati dalla lettera
+&ldquo;A&rdquo; e sulla riga sono indicati nell'ordine nome, estensione
+e<br>
+
+programma. Le cartelle sono identificate dalla lettera &ldquo;C&rdquo; e sulla riga riportano il path della cartella.<br>
+
+I brani sono caratterizzati dalla lettera &ldquo;B&rdquo; e sulla riga
+riportano nome del file, titolo e artista. Per convenzione ogni<br>
+
+brano viene aggiunto all'ultima cartella che lo precede nel file.<br>
+
+Si ignorino le righe errate.<br>
+
+
+</body>
+</html>

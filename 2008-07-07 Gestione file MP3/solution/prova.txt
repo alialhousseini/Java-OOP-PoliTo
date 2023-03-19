@@ -1,0 +1,12 @@
+ A;Mpeg layer 3;mp3;winamp
+ A;Ogg Vorbis;ogg;winamp
+ A;Windows Media Audio;wma;wmplayer
+ 
+ C;/var/classica
+ B;albinoni.mp3;Adagio;Albinoni
+ 
+ C;/var/rock
+ B;one.mp3;One;U2
+  B;niente_paura.wma ;  Niente Paura;Ligabue
+  B;Homvia.wma ; Ho messo via;Ligabue
+ 
