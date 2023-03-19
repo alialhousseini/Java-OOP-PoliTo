@@ -7,8 +7,8 @@ rem the special in this small script is that it iterates through subdirs looking
 setlocal enableextensions enabledelayedexpansion
 
 for /d %%f in (*) do (
-    if exist "%%f\Testo.html" (
-        pandoc -f html -t markdown "%%f\Testo.html" -o "%%f\Requirements.md"
+    if exist "%%f\Requirements.html" (
+        pandoc -f html -t markdown "%%f\Requirements.html" -o "%%f\README.md"
         echo Converted %%f\Testo.html to %%f\README.md
     )
 )
